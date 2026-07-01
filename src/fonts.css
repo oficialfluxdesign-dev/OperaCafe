@@ -1,0 +1,15 @@
+@font-face {
+    font-family: "AF Sobremesa regular";
+    src: url("./assets/fonts/AFSOBREMESA-REGULAR.OTF") format("opentype");
+  }
+  
+  @font-face {
+    font-family: "AF Sobremesa medium";
+    src: url("./assets/fonts/AFSOBREMESA-MEDIUM.OTF") format("opentype");
+  }
+  
+  @font-face {
+    font-family: "AF Sobremesa light";
+    src: url("./assets/fonts/AFSobremesa-Light.otf") format("opentype");
+  }
+  

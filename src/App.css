@@ -1,0 +1,11 @@
+body {
+    letter-spacing: 1px;
+    p, a, span, button, motion.p{
+        font-family: "AF Sobremesa light", sans-serif;
+        font-size: 14px;
+    }
+
+    h1, h2, h3, h4, h5, h6{
+        font-family: "AF Sobremesa medium", sans-serif;
+   }
+}
