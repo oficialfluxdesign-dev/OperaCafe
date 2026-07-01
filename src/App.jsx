@@ -5,7 +5,7 @@ import Sobre from './pages/Sobre'
 import Cardapio from './pages/Cardapio'
 import Eventos from './pages/Eventos'
 import Contato from './pages/Contato'
-import ScrollToTop from './components/ScrollToTop.JSX'
+import ScrollToTop from './components/ScrollToTop'
 
 function App() {
   return (
