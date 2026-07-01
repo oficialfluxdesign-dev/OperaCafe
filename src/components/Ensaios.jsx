@@ -44,10 +44,10 @@ export default function Ensaios() {
                 md:tracking-[-2px]
               "
             >
-              Quer eternizar momentos
-              <br />
-              especiais em um ambiente
-              <br />
+              Quer eternizar momentos &nbsp;
+              <br className="hidden lg:block"/>
+              especiais em um ambiente &nbsp;
+              <br className="hidden lg:block"/>
               único e inspirador?
             </motion.h2>
 

@@ -58,67 +58,110 @@ export default function SobreNos() {
         </motion.div>
 
         {/* galeria */}
-        <div className="overflow-hidden mb-10 md:mb-14">
-          <div className="max-w-[1700px] mx-auto overflow-hidden">
+        {/* GALERIA MOBILE */}
+<div className="md:hidden px-5 mb-10">
+  <div className="relative h-[280px] rounded-[12px] overflow-hidden">
 
-            <div className="flex gap-2 md:gap-4 h-[260px] md:h-[520px] px-5 md:px-20 w-full">
+    {images.map((img, index) => (
+      <motion.img
+        key={index}
+        src={img}
+        alt=""
+        initial={false}
+        animate={{
+          opacity: active === index ? 1 : 0,
+          scale: active === index ? 1 : 1.08,
+        }}
+        transition={{
+          duration: 0.8,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+        className="absolute inset-0 w-full h-full object-cover"
+      />
+    ))}
 
-              {images.map((img, index) => {
-                const isActive = index === active;
-                const isPreview = index === 0;
+    <div className="absolute inset-0 bg-black/10" />
 
-                return (
-                  <motion.div
-                    key={index}
-                    layout
-                    transition={{
-                      layout: {
-                        duration: 1,
-                        ease: [0.22, 1, 0.36, 1],
-                      },
-                    }}
-                    className="
-                      relative
-                      rounded-[8px]
-                      overflow-hidden
-                      min-w-0
-                      flex-shrink-0
-                    "
-                    animate={{
-                      flex: isActive
-                        ? 2.6
-                        : isPreview
-                        ? 0.45
-                        : 1,
-                    }}
-                  >
-                    <motion.img
-                      src={img}
-                      alt=""
-                      className="
-                        absolute
-                        inset-0
-                        w-full
-                        h-full
-                        object-cover
-                      "
-                      animate={{
-                        scale: isActive ? 1.02 : 1,
-                      }}
-                      transition={{
-                        duration: 1,
-                        ease: [0.22, 1, 0.36, 1],
-                      }}
-                    />
+    {/* indicadores */}
+    <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+      {images.map((_, index) => (
+        <div
+          key={index}
+          className={`transition-all duration-500 rounded-full ${
+            active === index
+              ? "w-7 h-2 bg-white"
+              : "w-2 h-2 bg-white/50"
+          }`}
+        />
+      ))}
+    </div>
 
-                    <div className="absolute inset-0 bg-black/10" />
-                  </motion.div>
-                );
-              })}
+  </div>
+</div>
 
-            </div>
-          </div>
-        </div>
+{/* GALERIA DESKTOP (EXATAMENTE A MESMA) */}
+<div className="hidden md:block overflow-hidden mb-14">
+  <div className="max-w-[1700px] mx-auto overflow-hidden">
+
+    <div className="flex gap-4 h-[520px] px-20 w-full">
+
+      {images.map((img, index) => {
+        const isActive = index === active;
+        const isPreview = index === 0;
+
+        return (
+          <motion.div
+            key={index}
+            layout
+            transition={{
+              layout: {
+                duration: 1,
+                ease: [0.22, 1, 0.36, 1],
+              },
+            }}
+            className="
+              relative
+              rounded-[8px]
+              overflow-hidden
+              min-w-0
+              flex-shrink-0
+            "
+            animate={{
+              flex: isActive
+                ? 2.6
+                : isPreview
+                ? 0.45
+                : 1,
+            }}
+          >
+            <motion.img
+              src={img}
+              alt=""
+              className="
+                absolute
+                inset-0
+                w-full
+                h-full
+                object-cover
+              "
+              animate={{
+                scale: isActive ? 1.02 : 1,
+              }}
+              transition={{
+                duration: 1,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+            />
+
+            <div className="absolute inset-0 bg-black/10" />
+          </motion.div>
+        );
+      })}
+
+    </div>
+
+  </div>
+</div>
 
         {/* conteúdo */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start max-w-[1700px] mx-auto px-5 md:px-20">

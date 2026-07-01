@@ -63,6 +63,7 @@ export default function Torrefacao() {
                 md:text-[18px]
                 md:leading-[170%]
                 mt-[21.5rem]
+                lg:mt-0
               "
             >
               No Opera Café Bistrô, a torra não é apenas uma etapa do processo,
