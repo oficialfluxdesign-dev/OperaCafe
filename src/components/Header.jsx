@@ -12,7 +12,7 @@ import {
   X,
 } from "lucide-react";
 
-import logo from "../assets/logo.svg";
+import logo from "../assets/Logo.svg";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
