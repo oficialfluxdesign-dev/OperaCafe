@@ -1,20 +1,20 @@
 import { motion } from "framer-motion";
 
-import Imagem1 from "../assets/imagem1.png";
-import Imagem2 from "../assets/imagem2.png";
-import Imagem3 from "../assets/imagem3.png";
-import Imagem4 from "../assets/imagem4.png";
-import Imagem5 from "../assets/imagem5.png";
-import Imagem6 from "../assets/imagem6.png";
-import Imagem7 from "../assets/imagem7.png";
-import Imagem8 from "../assets/imagem8.png";
-import Imagem9 from "../assets/imagem9.png";
-import Imagem10 from "../assets/imagem10.png";
-import Imagem11 from "../assets/imagem11.png";
-import Imagem12 from "../assets/imagem12.png";
-import Imagem13 from "../assets/imagem13.png";
-import Imagem14 from "../assets/imagem14.png";
-import Imagem15 from "../assets/imagem15.png";
+import Imagem1 from "../assets/Imagem1.png";
+import Imagem2 from "../assets/Imagem2.png";
+import Imagem3 from "../assets/Imagem3.png";
+import Imagem4 from "../assets/Imagem4.png";
+import Imagem5 from "../assets/Imagem5.png";
+import Imagem6 from "../assets/Imagem6.png";
+import Imagem7 from "../assets/Imagem7.png";
+import Imagem8 from "../assets/Imagem8.png";
+import Imagem9 from "../assets/Imagem9.png";
+import Imagem10 from "../assets/Imagem10.png";
+import Imagem11 from "../assets/Imagem11.png";
+import Imagem12 from "../assets/Imagem12.png";
+import Imagem13 from "../assets/Imagem13.png";
+import Imagem14 from "../assets/Imagem14.png";
+import Imagem15 from "../assets/Imagem15.png";
 
 const columns = [
   [Imagem1, Imagem2, Imagem3],
