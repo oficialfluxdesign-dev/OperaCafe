@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 import CtaImagem from "../assets/CtaImagem.png";
-import logo from "../assets/logo.svg";
+import logo from "../assets/Logo.svg";
 
 export default function Footer() {
   return (
