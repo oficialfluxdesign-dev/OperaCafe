@@ -17,8 +17,9 @@ const buttonAnim = {
 
 export default function HeroContato() {
   return (
-    <section className="relative h-screen overflow-hidden">
+    <section className="relative min-h-screen overflow-hidden">
 
+      {/* Imagem */}
       <motion.img
         src={HeroImagemContato}
         alt=""
@@ -28,32 +29,50 @@ export default function HeroContato() {
           duration: 2.5,
           ease: [0.22, 1, 0.36, 1],
         }}
-        className="
-          absolute
-          inset-0
-          w-full
-          h-full
-          object-cover
-        "
+        className="absolute inset-0 w-full h-full object-cover"
       />
 
-      <div className="absolute inset-0 bg-black/45" />
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/60 lg:bg-black/45" />
 
       <div
         className="
           relative
           z-10
-          h-full
+          min-h-screen
           max-w-[1700px]
           mx-auto
           flex
           flex-col
-          justify-end
-          py-40
+          justify-center
+          lg:justify-end
+          items-start
           px-6
+          sm:px-10
+          lg:px-20
+          pb-16
+          sm:pb-20
+          lg:pb-32
+          pt-28
         "
       >
 
+        {/* Eyebrow */}
+        <motion.span
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="
+            uppercase
+            tracking-[5px]
+            text-[#8DD7C5]
+            text-xs
+            mb-5
+          "
+        >
+          Contato
+        </motion.span>
+
+        {/* Título */}
         <motion.h1
           initial={{ opacity: 0, y: 70 }}
           animate={{ opacity: 1, y: 0 }}
@@ -62,15 +81,22 @@ export default function HeroContato() {
             delay: .3,
           }}
           className="
-           text-white text-4xl md:text-6xl leading-tight
+            text-white
+            text-[34px]
+            sm:text-[46px]
+            md:text-[60px]
+            lg:text-[76px]
+            leading-[1.05]
+            tracking-[-2px]
+            max-w-[900px]
           "
         >
-          Conecte-se Conosco:
+          Estamos prontos
           <br />
-          Estamos Prontos
-          para Atendê-lo.
+          para atender você.
         </motion.h1>
 
+        {/* Descrição */}
         <motion.p
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -79,43 +105,23 @@ export default function HeroContato() {
           }}
           className="
             mt-6
+            max-w-[340px]
+            sm:max-w-[520px]
+            lg:max-w-[650px]
             text-white/80
-            text-[18px]
-            leading-[190%]
-            max-w-[620px]
+            text-[15px]
+            sm:text-[17px]
+            lg:text-[20px]
+            leading-[180%]
+            lg:leading-[190%]
           "
         >
           Seja para uma reserva, um evento especial ou uma parceria,
-          sua mensagem é importante para nós.
+          estamos à disposição para conversar com você.
         </motion.p>
 
-        <motion.div
-          initial="hidden"
-          animate="show"
-          className="
-            flex
-            flex-col
-            sm:flex-row
-            gap-4
-            mt-10
-          "
-        >
-          <motion.button
-              variants={buttonAnim}
-              className="bg-[#015642] hover:bg-[#017459] border-[#017459] border-3 transition px-[30px] py-[20px] rounded-full text-white cursor-pointer"
-            >
-              Enviar mensagem
-            </motion.button>
-
-            <motion.button
-              variants={buttonAnim}
-              className="border border-[#017459] hover:bg-[#017459] border-3 transition px-8 py-4 rounded-full text-white cursor-pointer"
-            >
-              Ver nossa localização
-            </motion.button>
-        </motion.div>
-
       </div>
+
     </section>
   );
 }

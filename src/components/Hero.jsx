@@ -77,134 +77,166 @@ export default function Hero() {
 
       {/* Conteúdo */}
       <motion.div
-        variants={container}
-        initial="hidden"
-        animate="show"
-        className="
-          relative
-          z-20
-          h-full
-          max-w-[1700px]
-          mx-auto
-          px-6
-          md:px-20
-          flex
-          items-end
-          lg:pb-44
-          pb-24
-        "
-      >
-        <div className="max-w-6xl">
+  variants={container}
+  initial="hidden"
+  animate="show"
+  className="
+    relative
+    z-20
+    min-h-screen
+    max-w-[1700px]
+    mx-auto
+    flex
+    flex-col
+    justify-center
+    lg:justify-end
+    items-start
+    px-6
+    sm:px-10
+    lg:px-20
+    pt-28
+    pb-16
+    sm:pb-20
+    lg:pb-32
+"
+>
 
-          <motion.h1
-            variants={fadeUp}
-            className="
-              text-white
-              text-[38px]
-              leading-[1.1]
-              md:text-6xl
-              md:leading-tight
-            "
-          >
-            Opera Café Bistrô: Onde a Paixão pelo Café
-            Encontra a Alta Gastronomia.
-          </motion.h1>
+  <motion.span
+    variants={fadeUp}
+    className="
+      uppercase
+      tracking-[5px]
+      text-[#8DD7C5]
+      text-xs
+      mb-5
+    "
+  >
+    Opera Café Bistrô
+  </motion.span>
 
-          <motion.p
-            variants={fadeUp}
-            className="
-              text-white/80
-              mt-[10px]
-              text-[15px]
-              md:text-base
-              leading-[170%]
-              md:leading-[150%]
-            "
-          >
-            Descubra um refúgio de sabor e cultura no coração de Goiânia.&nbsp;
-            <br className="hidden lg:block"/>
-            Cafeteria, Bistrô e Torrefação com alma.
-          </motion.p>
+  <motion.h1
+    variants={fadeUp}
+    className="
+      text-white
+      text-[34px]
+      sm:text-[46px]
+      md:text-[60px]
+      lg:text-[76px]
+      leading-[1.05]
+      tracking-[-2px]
+      max-w-[1000px]
+    "
+  >
+    Onde a paixão pelo café
+    <br />
+    encontra a alta gastronomia.
+  </motion.h1>
 
-          {/* Botões */}
-          <motion.div
-            className="flex flex-row gap-3 mt-[42px]"
-          >
-            <motion.button
-              variants={buttonAnim}
-              className="
-                flex-1
-                sm:flex-none
-                bg-[#015642]
-                hover:bg-[#017459]
-                border-[#017459]
-                border-[3px]
-                transition
-                px-4
-                md:px-[30px]
-                py-4
-                md:py-[20px]
-                rounded-full
-                text-white
-                text-sm
-                md:text-base
-                cursor-pointer
-              "
-            >
-              Explore Nossos Sabores
-            </motion.button>
+  <motion.p
+    variants={fadeUp}
+    className="
+      mt-6
+      max-w-[340px]
+      sm:max-w-[560px]
+      lg:max-w-[700px]
+      text-white/80
+      text-[15px]
+      sm:text-[17px]
+      lg:text-[20px]
+      leading-[180%]
+      lg:leading-[190%]
+    "
+  >
+    Descubra um refúgio de sabor e cultura no coração de Goiânia.
+    <br className="hidden md:block" />
+    Cafeteria, bistrô e torrefação com alma.
+  </motion.p>
 
-            <motion.button
-              variants={buttonAnim}
-              className="
-                flex-1
-                sm:flex-none
-                border
-                border-[#017459]
-                border-[3px]
-                hover:bg-[#017459]
-                transition
-                px-4
-                md:px-8
-                py-4
-                rounded-full
-                text-white
-                text-sm
-                md:text-base
-                cursor-pointer
-              "
-            >
-              Garanta Seu Lugar
-            </motion.button>
-          </motion.div>
+  <motion.div
+    className="
+      mt-10
+      flex
+      flex-col
+      sm:flex-row
+      gap-4
+      w-full
+      sm:w-auto
+    "
+  >
+    <motion.button
+      variants={buttonAnim}
+      className="
+        w-full
+        sm:w-auto
+        px-8
+        lg:px-10
+        py-4
+        lg:py-5
+        rounded-full
+        bg-[#015642]
+        border-2
+        border-[#017459]
+        hover:bg-[#017459]
+        transition
+        text-white
+        font-medium
+        cursor-pointer
+      "
+    >
+      Explore Nossos Sabores
+    </motion.button>
 
-          {/* Avaliações (Desktop apenas) */}
-          <motion.div
-            variants={ratingAnim}
-            className="
-              hidden
-              lg:block
-              absolute
-              right-7
-              -mt-17
-              text-white
-              px-20
-            "
-          >
-            <h1 className="text-4xl">4.6 / 5</h1>
+    <motion.button
+      variants={buttonAnim}
+      className="
+        w-full
+        sm:w-auto
+        px-8
+        lg:px-10
+        py-4
+        lg:py-5
+        rounded-full
+        border-2
+        border-[#017459]
+        hover:bg-[#017459]
+        transition
+        text-white
+        font-medium
+        cursor-pointer
+      "
+    >
+      Garanta Seu Lugar
+    </motion.button>
+  </motion.div>
 
-            <p className="text-white/80 mt-2 flex gap-2">
-              <img
-                src={GoogleIcon}
-                alt=""
-                className="w-4 h-4"
-              />
-              1.675 Avaliações
-            </p>
-          </motion.div>
+  <motion.div
+    variants={ratingAnim}
+    className="
+      hidden
+      xl:flex
+      absolute
+      right-20
+      bottom-32
+      flex-col
+      text-white
+    "
+  >
+    <h2 className="text-5xl font-light">
+      4.6 / 5
+    </h2>
 
-        </div>
-      </motion.div>
+    <p className="mt-3 flex items-center gap-2 text-white/80">
+      <img
+        src={GoogleIcon}
+        alt=""
+        className="w-5 h-5"
+      />
+
+      1.675 Avaliações
+    </p>
+  </motion.div>
+
+</motion.div>
 
       {/* Curva */}
       <motion.div

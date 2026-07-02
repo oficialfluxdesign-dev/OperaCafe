@@ -17,8 +17,10 @@ const buttonAnim = {
 
 export default function HeroCardapio() {
   return (
-    <section id="hero-cardapio" className="relative min-h-screen overflow-hidden">
-
+    <section
+      id="hero-cardapio"
+      className="relative h-screen overflow-hidden"
+    >
       {/* Imagem */}
       <motion.img
         src={ImagemHero}
@@ -33,31 +35,50 @@ export default function HeroCardapio() {
       />
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black/40" />
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.5 }}
+        className="absolute inset-0 bg-black/45"
+      />
 
+      {/* Conteúdo */}
       <div
         className="
           relative
-          z-10
-          h-full
+          z-20
           min-h-screen
           max-w-[1700px]
           mx-auto
           flex
           flex-col
-          justify-end
-          items-center
+          justify-center
+          lg:justify-end
+          items-start
           px-6
           sm:px-10
           lg:px-20
+          pt-28
           pb-16
           sm:pb-20
           lg:pb-32
-          text-center
         "
       >
+        <motion.span
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: .15 }}
+          className="
+            uppercase
+            tracking-[5px]
+            text-[#8DD7C5]
+            text-xs
+            mb-5
+          "
+        >
+          Cardápio
+        </motion.span>
 
-        {/* Título */}
         <motion.h1
           initial={{ opacity: 0, y: 70 }}
           animate={{ opacity: 1, y: 0 }}
@@ -67,18 +88,20 @@ export default function HeroCardapio() {
           }}
           className="
             text-white
-              text-[38px]
-              leading-[1.1]
-              md:text-6xl
-              md:leading-tight
+            text-[34px]
+            sm:text-[46px]
+            md:text-[60px]
+            lg:text-[76px]
+            leading-[1.05]
+            tracking-[-2px]
+            max-w-[900px]
           "
         >
-          Nosso Cardápio:
+          Sabores preparados
           <br />
-          Sabores que Contam Histórias
+          para marcar momentos.
         </motion.h1>
 
-        {/* Descrição */}
         <motion.p
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -87,61 +110,22 @@ export default function HeroCardapio() {
           }}
           className="
             mt-6
-            lg:mt-8
+            max-w-[340px]
+            sm:max-w-[560px]
+            lg:max-w-[700px]
             text-white/80
-            text-[16px]
-            sm:text-[18px]
+            text-[15px]
+            sm:text-[17px]
             lg:text-[20px]
             leading-[180%]
             lg:leading-[190%]
-            max-w-[680px]
           "
         >
-          Do café especial à gastronomia autoral, cada item do nosso
-          cardápio foi criado para transformar momentos simples em
-          experiências memoráveis.
+          Do café especial à gastronomia autoral, cada item foi pensado
+          para transformar momentos simples em experiências memoráveis.
         </motion.p>
 
-        {/* Botões */}
-        <motion.div
-          initial="hidden"
-          animate="show"
-          className="
-            mt-10
-            lg:mt-12
-            flex
-            flex-col
-            sm:flex-row
-            gap-4
-            w-full
-            sm:w-auto
-          "
-        >
-          <motion.button
-            variants={buttonAnim}
-            className="
-              w-full
-              sm:w-auto
-              border-2
-              border-[#017459]
-              hover:bg-[#017459]
-              transition
-              px-8
-              lg:px-10
-              py-4
-              lg:py-5
-              rounded-full
-              text-white
-              font-medium
-              cursor-pointer
-            "
-          >
-            Garanta Seu Lugar
-          </motion.button>
-        </motion.div>
-
       </div>
-
     </section>
   );
 }
