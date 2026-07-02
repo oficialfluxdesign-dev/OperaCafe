@@ -9,11 +9,10 @@ export default function Footer() {
     <footer
       id="footer"
       className="
-        sticky
-        bottom-0
+        relative
         bg-[#0A0A0A]
         text-white
-        z-0
+        overflow-hidden
       "
     >
       {/* Background */}
