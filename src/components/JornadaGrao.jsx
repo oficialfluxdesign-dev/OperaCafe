@@ -35,61 +35,83 @@ export default function JornadaGrao() {
   const sectionRef = useRef(null);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      const cards = gsap.utils.toArray(".step-card");
-
-      gsap.set(cards, {
-        opacity: 0,
-        y: 100,
-      });
-
-      gsap.set(cards[0], {
-        opacity: 1,
-        y: 0,
-      });
-
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: `+=${steps.length * 800}`,
-          scrub: 1,
-          pin: true,
-        },
-      });
-
-      cards.forEach((card, index) => {
-        if (index === 0) return;
-
-        tl.to(cards[index - 1], {
-          opacity: 0.00,
-          scale: 0.92,
-          y: -80,
-          duration: 1,
+    const mm = gsap.matchMedia();
+  
+    // Desktop
+    mm.add("(min-width: 1024px)", () => {
+      const ctx = gsap.context(() => {
+        const cards = gsap.utils.toArray(".step-card");
+  
+        gsap.set(cards, {
+          opacity: 0,
+          y: 100,
         });
-
-        tl.to(
-          card,
-          {
-            opacity: 1,
-            y: 0,
-            duration: 1,
+  
+        gsap.set(cards[0], {
+          opacity: 1,
+          y: 0,
+        });
+  
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top top",
+            end: `+=${steps.length * 800}`,
+            scrub: 1,
+            pin: true,
           },
-          "<"
-        );
+        });
+  
+        cards.forEach((card, index) => {
+          if (index === 0) return;
+  
+          tl.to(cards[index - 1], {
+            opacity: 0,
+            scale: 0.92,
+            y: -80,
+            duration: 1,
+          });
+  
+          tl.to(
+            card,
+            {
+              opacity: 1,
+              y: 0,
+              duration: 1,
+            },
+            "<"
+          );
+        });
+      }, sectionRef);
+  
+      return () => ctx.revert();
+    });
+  
+    // Mobile
+    mm.add("(max-width: 1023px)", () => {
+      gsap.utils.toArray(".mobile-step").forEach((card) => {
+        gsap.from(card, {
+          opacity: 0,
+          y: 70,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 82%",
+          },
+        });
       });
-    }, sectionRef);
-
-    return () => ctx.revert();
+    });
+  
+    return () => mm.revert();
   }, []);
 
   return (
     <section
       ref={sectionRef}
-      className="relative h-screen overflow-hidden bg-white"
+      className="relative bg-white lg:h-screen overflow-hidden lg:overflow-hidden"
     >
-      <div className="max-w-[1700px] mx-auto px-20 h-full">
-
+      <div className="max-w-[1700px] mx-auto px-20 h-full hidden lg:block">
         {/* título */}
         <div className="pt-38 text-center">
           <h2
@@ -102,9 +124,7 @@ export default function JornadaGrao() {
             Etapas da Jornada do Grão
           </h2>
         </div>
-
         <div className="relative h-full flex items-center">
-
           {/* linha */}
           <div
             className="
@@ -118,7 +138,6 @@ export default function JornadaGrao() {
               bg-[#D9E3DE]
             "
           />
-
           {/* bolinhas */}
           <div
             className="
@@ -145,18 +164,24 @@ export default function JornadaGrao() {
               />
             ))}
           </div>
-
           {/* cards */}
           <div className="relative w-full h-[600px] flex items-center justify-center">
-
             {steps.map((step, index) => (
               <div
                 key={index}
                 className={`
                   step-card
                   absolute
-                  w-[520px]
-                  ${index % 2 === 0 ? "left-0" : "right-0"}
+                  w-[90%]
+                  max-w-[520px]
+                  left-1/2
+                  -translate-x-1/2
+                  md:translate-x-0
+                  ${
+                    index % 2 === 0
+                      ? "md:left-0"
+                      : "md:left-auto md:right-0"
+                  }
                 `}
               >
                 {/* número gigante */}
@@ -174,7 +199,6 @@ export default function JornadaGrao() {
                 >
                   {(index + 1).toString().padStart(2, "0")}
                 </div>
-
                 <div
                   className="
                     bg-white
@@ -195,7 +219,6 @@ export default function JornadaGrao() {
                   >
                     Etapa {(index + 1).toString().padStart(2, "0")}
                   </span>
-
                   <h3
                     className="
                       mt-5
@@ -206,7 +229,6 @@ export default function JornadaGrao() {
                   >
                     {step.title}
                   </h3>
-
                   <p
                     className="
                       mt-8
@@ -220,10 +242,98 @@ export default function JornadaGrao() {
                 </div>
               </div>
             ))}
-
           </div>
-
         </div>
+      </div>
+
+      <div className="lg:hidden mt-14 relative pb-16 mr-6">
+        {/* Linha */}
+        <div className="absolute left-[18px] top-0 bottom-0 w-[2px] bg-[#D9E3DE]" />
+
+        {steps.map((step, index) => (
+          <div
+            key={index}
+            className="mobile-step relative pl-14 mb-10"
+          >
+            {/* Bolinha */}
+            <div
+              className="
+                absolute
+                left-[6px]
+                top-8
+                w-6
+                h-6
+                rounded-full
+                bg-[#015642]
+                border-[5px]
+                border-white
+                shadow-md
+              "
+            />
+
+            <div
+              className="
+                relative
+                overflow-hidden
+                rounded-[28px]
+                border
+                border-[#E7ECE9]
+                bg-white
+                px-7
+                py-8
+                shadow-[0_15px_40px_rgba(0,0,0,.05)]
+              "
+            >
+              {/* Número */}
+              <span
+                className="
+                  absolute
+                  -top-2
+                  right-5
+                  text-[72px]
+                  font-medium
+                  text-[#017459]/10
+                  select-none
+                "
+              >
+                {(index + 1).toString().padStart(2, "0")}
+              </span>
+
+              <span
+                className="
+                  uppercase
+                  tracking-[4px]
+                  text-[11px]
+                  text-[#017459]
+                "
+              >
+                Etapa {(index + 1).toString().padStart(2, "0")}
+              </span>
+
+              <h3
+                className="
+                  mt-4
+                  text-[28px]
+                  leading-tight
+                  text-[#272727]
+                "
+              >
+                {step.title}
+              </h3>
+
+              <p
+                className="
+                  mt-5
+                  text-[16px]
+                  leading-8
+                  text-[#666]
+                "
+              >
+                {step.desc}
+              </p>
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );

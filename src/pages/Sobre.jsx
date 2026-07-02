@@ -212,28 +212,36 @@ export default function Sobre() {
         <JornadaGrao />
   
         {/* Manifesto */}
-        <section className="pb-20">
-  
-          <div className="max-w-[1700px] mx-auto text-center px-6">
-  
+        <section className="py-16 lg:pb-20 lg:pt-0">
+          <div className="max-w-[1700px] mx-auto text-center px-6 lg:px-20">
+
             <h2
               className="
-                text-[72px]
-                leading-[1.05]
-                tracking-[-3px]
+                text-[34px]
+                sm:text-[44px]
+                lg:text-[72px]
+                leading-[1.15]
+                lg:leading-[1.05]
+                tracking-[-1.5px]
+                lg:tracking-[-3px]
                 text-[#272727]
               "
             >
               Mais do que servir café,
-              <br />
+              <br className="hidden sm:block" />
+              <span className="sm:hidden"> </span>
               acreditamos em criar experiências.
             </h2>
-  
+
             <p
               className="
-                mt-14
-                text-[22px]
-                leading-[190%]
+                mt-8
+                lg:mt-14
+                text-[16px]
+                sm:text-[18px]
+                lg:text-[22px]
+                leading-[180%]
+                lg:leading-[190%]
                 text-[#666]
                 max-w-[820px]
                 mx-auto
@@ -244,21 +252,23 @@ export default function Sobre() {
               memórias especiais. Cada xícara, cada prato e cada conversa fazem
               parte dessa experiência que buscamos construir diariamente.
             </p>
-  
+
             <div
               className="
-                mt-20
+                mt-10
+                lg:mt-20
                 uppercase
-                tracking-[6px]
+                tracking-[3px]
+                lg:tracking-[6px]
                 text-[#015642]
-                text-sm
+                text-[12px]
+                lg:text-sm
               "
             >
               Opera Café Bistrô
             </div>
-  
+
           </div>
-  
         </section>
       </section>
   
