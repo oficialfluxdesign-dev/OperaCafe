@@ -15,9 +15,9 @@ export default function Cardapio() {
         <HeroCardapio />
 
         <section>
-          <CategoriasCardapio sections={cardapio} />
+          <CategoriasCardapio sections={cardapio}/>
 
-          <div className="max-w-[1700px] mx-auto p-20">
+          <div className="max-w-[1700px] mx-auto p-5 lg:px-20 pt-20">
             {cardapio.map((section) => (
               <SecaoCardapio
                 key={section.title}

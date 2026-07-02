@@ -79,6 +79,8 @@ export default function CategoriasCardapio({ sections }) {
         ease: [0.22, 1, 0.36, 1],
       }}
       className="
+        hidden
+        lg:block
         fixed
         left-1/2
         -translate-x-1/2
@@ -86,6 +88,7 @@ export default function CategoriasCardapio({ sections }) {
         z-50
         w-[95%]
         max-w-[1700px]
+        
       "
       style={{
         pointerEvents: visible ? "auto" : "none",

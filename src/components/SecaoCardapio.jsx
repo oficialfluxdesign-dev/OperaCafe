@@ -14,30 +14,33 @@ export default function SecaoCardapio({
   const nextRef = useRef(null);
 
   return (
-    <section
-      id={title}
-      className="mb-32"
-    >
-      {/* topo */}
-      <div className="flex justify-between items-center mb-10">
+    <section id={title} className="mb-20 lg:mb-32">
+
+      {/* Topo */}
+      <div className="flex items-end justify-between gap-4 mb-6 lg:mb-10">
 
         <h2
           className="
-            text-[42px]
-            text-[#272727]
+            text-[30px]
+            sm:text-[36px]
+            lg:text-[42px]
             tracking-[-1px]
+            leading-tight
+            text-[#272727]
           "
         >
           {title}
         </h2>
 
-        <div className="flex gap-3">
+        <div className="flex gap-2 shrink-0">
 
           <button
             ref={prevRef}
             className="
-              w-11
-              h-11
+              w-10
+              h-10
+              lg:w-11
+              lg:h-11
               rounded-full
               border
               border-[#E6E6E2]
@@ -56,8 +59,10 @@ export default function SecaoCardapio({
           <button
             ref={nextRef}
             className="
-              w-11
-              h-11
+              w-10
+              h-10
+              lg:w-11
+              lg:h-11
               rounded-full
               border
               border-[#E6E6E2]
@@ -67,9 +72,8 @@ export default function SecaoCardapio({
               transition
               duration-300
               hover:bg-[#015642]
-              hover:text-white
-            "
-          >
+              hover:text-white"
+            >
             <ChevronRight size={18} />
           </button>
 
@@ -79,8 +83,8 @@ export default function SecaoCardapio({
 
       <Swiper
         modules={[Navigation]}
-        spaceBetween={30}
-        slidesPerView={5}
+        spaceBetween={16}
+        slidesPerView={1.15}
         onBeforeInit={(swiper) => {
           swiper.params.navigation.prevEl = prevRef.current;
           swiper.params.navigation.nextEl = nextRef.current;
@@ -90,57 +94,88 @@ export default function SecaoCardapio({
           nextEl: nextRef.current,
         }}
         breakpoints={{
-          0: {
-            slidesPerView: 1.2,
+          480: {
+            slidesPerView: 1.4,
+            spaceBetween: 18,
           },
           640: {
             slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 2.5,
+            spaceBetween: 24,
           },
           1024: {
             slidesPerView: 3,
+            spaceBetween: 24,
           },
-          1400: {
+          1280: {
             slidesPerView: 4,
+            spaceBetween: 28,
           },
           1700: {
             slidesPerView: 5,
+            spaceBetween: 30,
           },
         }}
       >
         {products.map((item, index) => (
           <SwiperSlide key={index}>
-            <div>
 
-              {/* imagem */}
-              <div className="overflow-hidden rounded-xl bg-[#E9EEEB]">
+            <article>
+
+              {/* Imagem */}
+              <div className="overflow-hidden rounded-2xl bg-[#E9EEEB]">
+
                 <img
                   src={item.image}
                   alt={item.name}
                   className="
                     w-full
-                    h-[220px]
+                    h-[190px]
+                    sm:h-[220px]
+                    lg:h-[250px]
                     object-cover
                     transition-transform
                     duration-700
                     hover:scale-105
                   "
                 />
+
               </div>
 
-              {/* infos */}
-              <h3 className="mt-5 text-[20px] text-[#272727]">
+              {/* Conteúdo */}
+
+              <h3
+                className="
+                  mt-4
+                  text-[18px]
+                  lg:text-[20px]
+                  text-[#272727]
+                "
+              >
                 {item.name}
               </h3>
 
-              <h1 className="mt-2 text-[18px] text-[#017459]">
+              <p
+                className="
+                  mt-2
+                  text-[17px]
+                  lg:text-[18px]
+                  font-medium
+                  text-[#017459]
+                "
+              >
                 R$ {item.price}
-              </h1>
+              </p>
 
               <p
                 className="
                   mt-3
-                  text-[15px]
-                  leading-[180%]
+                  text-[14px]
+                  lg:text-[15px]
+                  leading-7
                   text-[#666]
                   line-clamp-2
                 "
@@ -148,10 +183,12 @@ export default function SecaoCardapio({
                 {item.description}
               </p>
 
-            </div>
+            </article>
+
           </SwiperSlide>
         ))}
       </Swiper>
+
     </section>
   );
 }
