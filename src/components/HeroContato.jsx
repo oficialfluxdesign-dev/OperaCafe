@@ -1,41 +1,72 @@
 import { motion } from "framer-motion";
 import HeroImagemContato from "../assets/HeroImagemContato.png";
 
-const buttonAnim = {
-  hidden: { y: 10, opacity: 0, scale: 0.9 },
+const ease = [0.22, 1, 0.36, 1];
+
+const container = {
+  hidden: {},
   show: {
-    y: 0,
-    opacity: 1,
-    scale: 1,
     transition: {
-      type: "spring",
-      stiffness: 140,
-      damping: 12,
+      staggerChildren: 0.18,
+      delayChildren: 0.25,
+    },
+  },
+};
+
+const fadeUp = {
+  hidden: {
+    opacity: 0,
+    y: 60,
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 1,
+      ease,
     },
   },
 };
 
 export default function HeroContato() {
   return (
-    <section className="relative min-h-screen overflow-hidden">
-
+    <section
+      id="hero-contato"
+      aria-labelledby="hero-contato-title"
+      className="relative min-h-screen overflow-hidden"
+    >
       {/* Imagem */}
       <motion.img
         src={HeroImagemContato}
-        alt=""
+        alt="Interior do Opera Café Bistrô em Goiânia, ambiente para reservas, eventos e atendimento."
+        loading="eager"
+        fetchPriority="high"
+        decoding="async"
+        width={1920}
+        height={1080}
         initial={{ scale: 1.08 }}
         animate={{ scale: 1 }}
         transition={{
           duration: 2.5,
-          ease: [0.22, 1, 0.36, 1],
+          ease,
+        }}
+        style={{
+          willChange: "transform",
         }}
         className="absolute inset-0 w-full h-full object-cover"
       />
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black/60 lg:bg-black/45" />
-
       <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-black/60 lg:bg-black/45"
+      />
+
+      {/* Conteúdo */}
+      <motion.div
+        variants={container}
+        initial="hidden"
+        animate="show"
         className="
           relative
           z-10
@@ -56,11 +87,9 @@ export default function HeroContato() {
           pt-28
         "
       >
-
         {/* Eyebrow */}
         <motion.span
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          variants={fadeUp}
           className="
             uppercase
             tracking-[5px]
@@ -74,12 +103,8 @@ export default function HeroContato() {
 
         {/* Título */}
         <motion.h1
-          initial={{ opacity: 0, y: 70 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: 1,
-            delay: .3,
-          }}
+          id="hero-contato-title"
+          variants={fadeUp}
           className="
             text-white
             text-[34px]
@@ -98,11 +123,7 @@ export default function HeroContato() {
 
         {/* Descrição */}
         <motion.p
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            delay: .6,
-          }}
+          variants={fadeUp}
           className="
             mt-6
             max-w-[340px]
@@ -119,9 +140,7 @@ export default function HeroContato() {
           Seja para uma reserva, um evento especial ou uma parceria,
           estamos à disposição para conversar com você.
         </motion.p>
-
-      </div>
-
+      </motion.div>
     </section>
   );
 }

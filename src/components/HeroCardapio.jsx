@@ -1,16 +1,24 @@
 import { motion } from "framer-motion";
 import ImagemHero from "../assets/HeroImagemCardapio.png";
 
-const buttonAnim = {
-  hidden: { y: 10, opacity: 0, scale: 0.9 },
+const container = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.18,
+      delayChildren: 0.3,
+    },
+  },
+};
+
+const fadeUp = {
+  hidden: { y: 70, opacity: 0 },
   show: {
     y: 0,
     opacity: 1,
-    scale: 1,
     transition: {
-      type: "spring",
-      stiffness: 140,
-      damping: 12,
+      duration: 1.1,
+      ease: [0.22, 1, 0.36, 1],
     },
   },
 };
@@ -19,19 +27,23 @@ export default function HeroCardapio() {
   return (
     <section
       id="hero-cardapio"
-      className="relative h-screen overflow-hidden"
+      aria-labelledby="hero-cardapio-title"
+      className="relative h-[100svh] md:h-screen overflow-hidden"
     >
       {/* Imagem */}
       <motion.img
         src={ImagemHero}
-        alt=""
+        alt="Cardápio do Opera Café Bistrô com cafés especiais, brunch, almoço e gastronomia artesanal em Goiânia."
+        fetchPriority="high"
+        loading="eager"
+        decoding="async"
         initial={{ scale: 1.08 }}
         animate={{ scale: 1 }}
         transition={{
           duration: 2.5,
           ease: [0.22, 1, 0.36, 1],
         }}
-        className="absolute inset-0 w-full h-full object-cover"
+        className="absolute inset-0 w-full h-full object-cover object-center"
       />
 
       {/* Overlay */}
@@ -40,10 +52,31 @@ export default function HeroCardapio() {
         animate={{ opacity: 1 }}
         transition={{ duration: 1.5 }}
         className="absolute inset-0 bg-black/45"
+        aria-hidden="true"
+      />
+
+      {/* Gradient */}
+      <div
+        className="
+          absolute
+          bottom-0
+          left-0
+          w-full
+          h-[180px]
+          md:h-[280px]
+          bg-gradient-to-t
+          from-black/70
+          via-black/20
+          to-transparent
+        "
+        aria-hidden="true"
       />
 
       {/* Conteúdo */}
-      <div
+      <motion.div
+        variants={container}
+        initial="hidden"
+        animate="show"
         className="
           relative
           z-20
@@ -65,9 +98,7 @@ export default function HeroCardapio() {
         "
       >
         <motion.span
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: .15 }}
+          variants={fadeUp}
           className="
             uppercase
             tracking-[5px]
@@ -76,16 +107,12 @@ export default function HeroCardapio() {
             mb-5
           "
         >
-          Cardápio
+          Cardápio • Opera Café Bistrô
         </motion.span>
 
         <motion.h1
-          initial={{ opacity: 0, y: 70 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: 1,
-            delay: .3,
-          }}
+          id="hero-cardapio-title"
+          variants={fadeUp}
           className="
             text-white
             text-[34px]
@@ -95,6 +122,7 @@ export default function HeroCardapio() {
             leading-[1.05]
             tracking-[-2px]
             max-w-[900px]
+            text-balance
           "
         >
           Sabores preparados
@@ -103,11 +131,7 @@ export default function HeroCardapio() {
         </motion.h1>
 
         <motion.p
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            delay: .6,
-          }}
+          variants={fadeUp}
           className="
             mt-6
             max-w-[340px]
@@ -119,13 +143,14 @@ export default function HeroCardapio() {
             lg:text-[20px]
             leading-[180%]
             lg:leading-[190%]
+            text-pretty
           "
         >
-          Do café especial à gastronomia autoral, cada item foi pensado
-          para transformar momentos simples em experiências memoráveis.
+          Descubra um cardápio exclusivo com cafés especiais, brunch,
+          almoço, sobremesas artesanais e bebidas preparadas com ingredientes
+          selecionados no Opera Café Bistrô, em Goiânia.
         </motion.p>
-
-      </div>
+      </motion.div>
     </section>
   );
 }

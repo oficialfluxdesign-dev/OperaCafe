@@ -1,20 +1,41 @@
+import { memo } from "react";
 import { motion } from "framer-motion";
-
 import HeroImagemSobre from "../assets/HeroImagemSobre.png";
 
-export default function HeroSobre() {
+const imageAnim = {
+  initial: { scale: 1.08 },
+  animate: { scale: 1 },
+  transition: {
+    duration: 2.5,
+    ease: [0.22, 1, 0.36, 1],
+  },
+};
+
+const fadeSmall = {
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+};
+
+const fadeTitle = {
+  initial: { opacity: 0, y: 50 },
+  animate: { opacity: 1, y: 0 },
+};
+
+function HeroSobre() {
   return (
-    <section className="relative h-[100svh] md:h-screen overflow-hidden">
-      {/* imagem */}
+    <section
+      className="relative h-[100svh] md:h-screen overflow-hidden"
+      aria-labelledby="hero-sobre-title"
+    >
+      {/* Imagem */}
       <motion.img
         src={HeroImagemSobre}
-        alt=""
-        initial={{ scale: 1.08 }}
-        animate={{ scale: 1 }}
-        transition={{
-          duration: 2.5,
-          ease: [0.22, 1, 0.36, 1],
-        }}
+        alt="Interior do Opera Café Bistrô em Goiânia"
+        loading="eager"
+        fetchPriority="high"
+        decoding="async"
+        draggable={false}
+        {...imageAnim}
         className="
           absolute
           inset-0
@@ -22,19 +43,15 @@ export default function HeroSobre() {
           h-full
           object-cover
           object-center
+          select-none
+          will-change-transform
         "
       />
 
-      {/* overlay */}
-      <div
-        className="
-          absolute
-          inset-0
-          bg-black/45
-        "
-      />
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/45" />
 
-      {/* gradient bottom */}
+      {/* Gradient */}
       <div
         className="
           absolute
@@ -50,7 +67,7 @@ export default function HeroSobre() {
         "
       />
 
-      {/* conteúdo */}
+      {/* Conteúdo */}
       <div
         className="
           relative
@@ -72,8 +89,7 @@ export default function HeroSobre() {
           <div className="md:hidden">
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              {...fadeSmall}
               transition={{
                 delay: .3,
                 duration: .8,
@@ -95,8 +111,8 @@ export default function HeroSobre() {
             </motion.div>
 
             <motion.h1
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
+              id="hero-sobre-title"
+              {...fadeTitle}
               transition={{
                 delay: .5,
                 duration: 1,
@@ -137,15 +153,14 @@ export default function HeroSobre() {
 
           </div>
 
-          {/* DESKTOP (EXATAMENTE O MESMO) */}
+          {/* DESKTOP */}
           <div className="hidden md:block">
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              {...fadeSmall}
               transition={{
-                delay: 0.3,
-                duration: 0.8,
+                delay: .3,
+                duration: .8,
               }}
               className="
                 flex
@@ -164,10 +179,10 @@ export default function HeroSobre() {
             </motion.div>
 
             <motion.h1
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
+              id="hero-sobre-title-desktop"
+              {...fadeTitle}
               transition={{
-                delay: 0.5,
+                delay: .5,
                 duration: 1,
                 ease: [0.22, 1, 0.36, 1],
               }}
@@ -183,12 +198,11 @@ export default function HeroSobre() {
             >
               Opera Café Bistrô
             </motion.h1>
-
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{
-                delay: 0.9,
+                delay: .9,
                 duration: 1,
               }}
               className="
@@ -197,6 +211,8 @@ export default function HeroSobre() {
                 md:text-[18px]
                 leading-[170%]
                 mt-[33px]
+                max-w-[700px]
+                mx-auto
               "
             >
               Uma jornada de paixão e tradição, cultivada em cada
@@ -210,3 +226,5 @@ export default function HeroSobre() {
     </section>
   );
 }
+
+export default memo(HeroSobre);

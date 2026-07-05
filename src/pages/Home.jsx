@@ -16,8 +16,8 @@ export default function Home() {
         <TopBlur />
         <Header />
         <Hero />
-        <TextoScroll />
         <Galeria />
+        <TextoScroll />
         <SobreNos />
         <Torrefacao />
         <Essencia />

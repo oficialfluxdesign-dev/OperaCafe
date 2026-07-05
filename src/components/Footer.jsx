@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 import CtaImagem from "../assets/CtaImagem.png";
@@ -35,18 +34,13 @@ export default function Footer() {
       </div>
 
       <div className="relative">
-
-        <div className=" flex flex-col justify-between">
+        <div className="flex flex-col justify-between">
 
           {/* CTA */}
           <section className="pt-24 md:pt-32 xl:pt-40">
             <div className="max-w-[1700px] mx-auto px-6 md:px-10 xl:px-20">
 
-              <motion.h2
-                initial={{ opacity: 0, y: 60 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: .8 }}
+              <h2
                 className="
                   text-center
                   text-[42px]
@@ -62,13 +56,9 @@ export default function Footer() {
                 Cultivando Momentos,
                 <br />
                 Sabores e Cultura.
-              </motion.h2>
+              </h2>
 
-              <motion.p
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: .2 }}
+              <p
                 className="
                   mt-8
                   md:mt-10
@@ -81,17 +71,18 @@ export default function Footer() {
                   mx-auto
                 "
               >
-                Um espaço pensado para encontros, sabores, cultura e experiências memoráveis.
+                Um espaço pensado para encontros, sabores, cultura e
+                experiências memoráveis.
                 <br className="hidden md:block" />
-                Descubra o ambiente perfeito para desacelerar e apreciar cada detalhe.
-              </motion.p>
+                Descubra o ambiente perfeito para desacelerar e apreciar
+                cada detalhe.
+              </p>
 
             </div>
           </section>
 
           {/* Bottom */}
           <section className="pb-10 md:pb-16 mt-20">
-
             <div className="max-w-[1700px] mx-auto px-6 md:px-10 xl:px-20">
 
               <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-12 md:gap-14 border-t border-white/10 pt-12 md:pt-16">
@@ -108,7 +99,8 @@ export default function Footer() {
                   </Link>
 
                   <p className="text-white/60 leading-[180%] max-w-[320px]">
-                    Cafeteria, bistrô e torrefação artesanal em um ambiente acolhedor e contemporâneo.
+                    Cafeteria, bistrô e torrefação artesanal em um ambiente
+                    acolhedor e contemporâneo.
                   </p>
 
                 </div>
@@ -122,23 +114,38 @@ export default function Footer() {
 
                   <nav className="flex flex-col gap-4 text-white/60">
 
-                    <Link to="/" className="hover:text-white transition">
+                    <Link
+                      to="/"
+                      className="hover:text-white transition"
+                    >
                       Início
                     </Link>
 
-                    <Link to="/sobre" className="hover:text-white transition">
+                    <Link
+                      to="/sobre"
+                      className="hover:text-white transition"
+                    >
                       Sobre Nós
                     </Link>
 
-                    <Link to="/cardapio" className="hover:text-white transition">
+                    <Link
+                      to="/cardapio"
+                      className="hover:text-white transition"
+                    >
                       Cardápio
                     </Link>
 
-                    <Link to="/eventos" className="hover:text-white transition">
+                    <Link
+                      to="/eventos"
+                      className="hover:text-white transition"
+                    >
                       Eventos
                     </Link>
 
-                    <Link to="/contato" className="hover:text-white transition">
+                    <Link
+                      to="/contato"
+                      className="hover:text-white transition"
+                    >
                       Contato
                     </Link>
 
@@ -177,22 +184,33 @@ export default function Footer() {
 
               </div>
 
-              <div className="mt-12 md:mt-14 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-white/40 text-sm">
-
+              <div
+                className="
+                  mt-12
+                  md:mt-14
+                  pt-8
+                  border-t
+                  border-white/10
+                  flex
+                  flex-col
+                  md:flex-row
+                  justify-between
+                  items-center
+                  gap-4
+                  text-white/40
+                  text-sm
+                "
+              >
                 <p>© 2026 Opera Café Bistrô.</p>
 
                 <p>Desenvolvido pela Flux.</p>
-
               </div>
 
             </div>
-
           </section>
 
         </div>
-
       </div>
-
     </footer>
   );
 }

@@ -1,15 +1,25 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import ImagemHero from "../assets/HeroImagemEventos.png";
 
 export default function HeroEventos() {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
-    <section className="relative h-[100svh] md:h-screen overflow-hidden">
+    <section
+      aria-labelledby="hero-eventos-title"
+      className="relative h-[100svh] md:h-screen overflow-hidden"
+    >
       {/* imagem */}
       <motion.img
         src={ImagemHero}
-        alt=""
-        initial={{ scale: 1.08 }}
-        animate={{ scale: 1 }}
+        alt="Eventos e experiências do Opera Café Bistrô em Goiânia"
+        loading="eager"
+        fetchPriority="high"
+        decoding="async"
+        draggable={false}
+        style={{ willChange: "transform" }}
+        initial={shouldReduceMotion ? false : { scale: 1.08 }}
+        animate={shouldReduceMotion ? {} : { scale: 1 }}
         transition={{
           duration: 2.5,
           ease: [0.22, 1, 0.36, 1],
@@ -21,11 +31,12 @@ export default function HeroEventos() {
           h-full
           object-cover
           object-center
+          transform-gpu
         "
       />
 
       {/* overlay */}
-      <div className="absolute inset-0 bg-black/45" />
+      <div className="absolute inset-0 bg-black/45 pointer-events-none" />
 
       {/* gradient */}
       <div
@@ -40,6 +51,7 @@ export default function HeroEventos() {
           from-black/70
           via-black/20
           to-transparent
+          pointer-events-none
         "
       />
 
@@ -65,7 +77,11 @@ export default function HeroEventos() {
           <div className="md:hidden">
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={
+                shouldReduceMotion
+                  ? false
+                  : { opacity: 0, y: 20 }
+              }
               animate={{ opacity: 1, y: 0 }}
               transition={{
                 delay: .3,
@@ -88,7 +104,12 @@ export default function HeroEventos() {
             </motion.div>
 
             <motion.h1
-              initial={{ opacity: 0, y: 50 }}
+              id="hero-eventos-title"
+              initial={
+                shouldReduceMotion
+                  ? false
+                  : { opacity: 0, y: 50 }
+              }
               animate={{ opacity: 1, y: 0 }}
               transition={{
                 delay: .5,
@@ -109,7 +130,11 @@ export default function HeroEventos() {
             </motion.h1>
 
             <motion.p
-              initial={{ opacity: 0 }}
+              initial={
+                shouldReduceMotion
+                  ? false
+                  : { opacity: 0 }
+              }
               animate={{ opacity: 1 }}
               transition={{
                 delay: .9,
@@ -124,17 +149,20 @@ export default function HeroEventos() {
                 mx-auto
               "
             >
-              Música, experiências e encontros que transformam
-              cada visita em um momento especial.
+              Eventos, workshops, música ao vivo e experiências
+              gastronômicas no Opera Café Bistrô, em Goiânia.
             </motion.p>
 
           </div>
 
           {/* DESKTOP */}
           <div className="hidden md:block">
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
+          <motion.div
+              initial={
+                shouldReduceMotion
+                  ? false
+                  : { opacity: 0, y: 20 }
+              }
               animate={{ opacity: 1, y: 0 }}
               transition={{
                 delay: .3,
@@ -147,7 +175,7 @@ export default function HeroEventos() {
                 text-white
                 text-[24px]
                 mb-[55px]
-                w-[68rem]
+                w-[58rem]
                 mx-auto
               "
             >
@@ -157,7 +185,12 @@ export default function HeroEventos() {
             </motion.div>
 
             <motion.h1
-              initial={{ opacity: 0, y: 50 }}
+              id="hero-eventos-title"
+              initial={
+                shouldReduceMotion
+                  ? false
+                  : { opacity: 0, y: 50 }
+              }
               animate={{ opacity: 1, y: 0 }}
               transition={{
                 delay: .5,
@@ -178,7 +211,11 @@ export default function HeroEventos() {
             </motion.h1>
 
             <motion.p
-              initial={{ opacity: 0 }}
+              initial={
+                shouldReduceMotion
+                  ? false
+                  : { opacity: 0 }
+              }
               animate={{ opacity: 1 }}
               transition={{
                 delay: .9,
@@ -192,8 +229,8 @@ export default function HeroEventos() {
                 mt-[33px]
               "
             >
-              Música ao vivo, workshops, experiências gastronômicas
-              e encontros criados para tornar cada visita inesquecível.
+              Descubra eventos, workshops, música ao vivo e experiências
+              gastronômicas exclusivas no Opera Café Bistrô, em Goiânia.
             </motion.p>
 
           </div>

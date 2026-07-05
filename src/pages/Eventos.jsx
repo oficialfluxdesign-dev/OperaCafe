@@ -1,121 +1,168 @@
+import { motion } from "framer-motion";
+
 import Header from "../components/Header";
 import HeroEventos from "../components/HeroEventos";
 import Footer from "../components/Footer";
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  whileInView: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
+
 export default function Eventos() {
   return (
     <>
-      <div className="relative z-10 bg-white">
-        <Header />
+      <Header />
+
+      <main>
+
         <HeroEventos />
 
-        <section className="py-20 px-6 bg-white">
-          <div className="max-w-[1100px] mx-auto text-center">
-            <h2
-              className="
-                mt-10
-                text-[56px]
-                md:text-[72px]
-                leading-[1]
-                tracking-[-3px]
-                text-[#272727]
-              "
+        <section
+          aria-labelledby="eventos-info"
+          className="py-20 md:py-28 bg-white"
+        >
+          <div className="max-w-[1200px] mx-auto px-6">
+
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="whileInView"
+              viewport={{ once: true }}
+              className="text-center"
             >
-              Estamos preparando
-              <br />
-              novas experiências.
-            </h2>
-            <p
-              className="
-                mt-10
-                max-w-[760px]
-                mx-auto
-                text-[20px]
-                leading-[190%]
-                text-[#666]
-              "
-            >
-              Nossa agenda de eventos está sendo cuidadosamente planejada para
-              oferecer momentos únicos que unem café, gastronomia, cultura e
-              conexões especiais. Em breve divulgaremos novas experiências,
-              workshops, encontros e eventos exclusivos no Opera Café Bistrô.
-            </p>
+
+              <span
+                className="
+                  uppercase
+                  tracking-[5px]
+                  text-[#015642]
+                  text-xs
+                "
+              >
+                Eventos Opera Café
+              </span>
+
+              <h2
+                id="eventos-info"
+                className="
+                  mt-6
+                  text-[#272727]
+                  text-[38px]
+                  sm:text-[52px]
+                  lg:text-[72px]
+                  leading-[1]
+                  tracking-[-3px]
+                "
+              >
+                Estamos preparando
+                <br />
+                novas experiências.
+              </h2>
+
+              <p
+                className="
+                  mt-8
+                  max-w-[820px]
+                  mx-auto
+                  text-[#666]
+                  text-[17px]
+                  lg:text-[20px]
+                  leading-[190%]
+                "
+              >
+                Nossa agenda de eventos está sendo cuidadosamente planejada para
+                oferecer experiências exclusivas que unem cafés especiais,
+                gastronomia autoral, cultura e momentos inesquecíveis em
+                Goiânia. Em breve divulgaremos workshops, degustações,
+                apresentações culturais e encontros especiais no Opera Café
+                Bistrô.
+              </p>
+
+            </motion.div>
+
             <div
               className="
                 mt-20
-                p-10
-                md:p-14
-                rounded-[12px]
-                border
-                border-[#017459]/10
+                grid
+                md:grid-cols-3
+                gap-8
               "
             >
-              <div className="grid md:grid-cols-3 gap-10">
-                <div>
+
+              {[
+                {
+                  title: "Workshops",
+                  text:
+                    "Aprenda sobre cafés especiais, métodos de preparo, torra e degustações guiadas por especialistas.",
+                },
+                {
+                  title: "Cultura",
+                  text:
+                    "Música ao vivo, arte, encontros culturais e experiências criadas para tornar cada visita memorável.",
+                },
+                {
+                  title: "Experiências Exclusivas",
+                  text:
+                    "Eventos intimistas, harmonizações gastronômicas e experiências únicas desenvolvidas pelo Opera Café Bistrô.",
+                },
+              ].map((item, index) => (
+                <motion.article
+                  key={item.title}
+                  variants={fadeUp}
+                  initial="hidden"
+                  whileInView="whileInView"
+                  viewport={{ once: true }}
+                  transition={{
+                    delay: index * 0.12,
+                  }}
+                  className="
+                    rounded-[16px]
+                    border
+                    border-[#017459]/10
+                    p-10
+                    transition-all
+                    duration-500
+                    hover:border-[#017459]/30
+                    hover:-translate-y-1
+                    transform-gpu
+                  "
+                >
                   <h3
                     className="
-                      mt-4
-                      text-[26px]
+                      text-[28px]
+                      tracking-[-1px]
                       text-[#272727]
                     "
                   >
-                    Workshops
+                    {item.title}
                   </h3>
+
                   <p
                     className="
-                      mt-3
+                      mt-5
                       text-[#666]
-                      leading-[180%]
+                      leading-[190%]
                     "
                   >
-                    Experiências focadas no universo dos cafés especiais.
+                    {item.text}
                   </p>
-                </div>
-                <div>
-                  <h3
-                    className="
-                      mt-4
-                      text-[26px]
-                      text-[#272727]
-                    "
-                  >
-                    Cultura
-                  </h3>
-                  <p
-                    className="
-                      mt-3
-                      text-[#666]
-                      leading-[180%]
-                    "
-                  >
-                    Música, arte e encontros para tornar cada visita memorável.
-                  </p>
-                </div>
-                <div>
-                  <h3
-                    className="
-                      mt-4
-                      text-[26px]
-                      text-[#272727]
-                    "
-                  >
-                    Experiências Exclusivas
-                  </h3>
-                  <p
-                    className="
-                      mt-3
-                      text-[#666]
-                      leading-[180%]
-                    "
-                  >
-                    Eventos especiais criados para conectar pessoas e sabores.
-                  </p>
-                </div>
-              </div>
+                </motion.article>
+              ))}
+
             </div>
+
           </div>
         </section>
-      </div>
+
+      </main>
 
       <Footer />
     </>

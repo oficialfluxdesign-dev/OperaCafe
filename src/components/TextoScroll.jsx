@@ -39,6 +39,8 @@ export default function TextoScroll() {
         md:py-20
         lg:py-24
         bg-white
+        hidden
+        lg:block
       "
     >
       <motion.h2
@@ -46,17 +48,15 @@ export default function TextoScroll() {
         style={{ x }}
         className="
           whitespace-nowrap
-          text-[44px]
-          lg:text-[160px]
+          text-[84px]
+          lg:text-[200px]
           font-light
           leading-none
           text-[#272727]
-          mx-20
-          md:mx-10
-          md:px-12
+          md:px-140
         "
       >
-        Mais que um Lugar: Um Ponto de Encontro Cultural.
+        Mais que um Café: Um Encontro.
       </motion.h2>
     </section>
   );
