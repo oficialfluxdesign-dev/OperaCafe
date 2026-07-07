@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import ImagemHero from "../assets/HeroImagemCardapio.png";
+import ImagemHeroDesktop from "../assets/HeroImagemCardapio.png";
+import ImagemHeroMobile from "../assets/HeroImagemCardapioMobile.jpg";
 
 const container = {
   hidden: {},
@@ -30,9 +31,9 @@ export default function HeroCardapio() {
       aria-labelledby="hero-cardapio-title"
       className="relative h-[100svh] md:h-screen overflow-hidden"
     >
-      {/* Imagem */}
+      {/* Imagem Desktop */}
       <motion.img
-        src={ImagemHero}
+        src={ImagemHeroDesktop}
         alt="Cardápio do Opera Café Bistrô com cafés especiais, brunch, almoço e gastronomia artesanal em Goiânia."
         fetchPriority="high"
         loading="eager"
@@ -43,7 +44,41 @@ export default function HeroCardapio() {
           duration: 2.5,
           ease: [0.22, 1, 0.36, 1],
         }}
-        className="absolute inset-0 w-full h-full object-cover object-center"
+        className="
+          hidden
+          md:block
+          absolute
+          inset-0
+          w-full
+          h-full
+          object-cover
+          object-center
+        "
+      />
+
+      {/* Imagem Mobile */}
+      <motion.img
+        src={ImagemHeroMobile}
+        alt="Cardápio do Opera Café Bistrô com cafés especiais, brunch, almoço e gastronomia artesanal em Goiânia."
+        fetchPriority="high"
+        loading="eager"
+        decoding="async"
+        initial={{ scale: 1.08 }}
+        animate={{ scale: 1 }}
+        transition={{
+          duration: 2.5,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+        className="
+          block
+          md:hidden
+          absolute
+          inset-0
+          w-full
+          h-full
+          object-cover
+          object-center
+        "
       />
 
       {/* Overlay */}

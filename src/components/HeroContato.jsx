@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import HeroImagemContato from "../assets/HeroImagemContato.png";
+import HeroImagemContatoDesktop from "../assets/HeroImagemContato.png";
+import HeroImagemContatoMobile from "../assets/HeroImagemContatoMobile.jpg";
 
 const ease = [0.22, 1, 0.36, 1];
 
@@ -35,9 +36,9 @@ export default function HeroContato() {
       aria-labelledby="hero-contato-title"
       className="relative min-h-screen overflow-hidden"
     >
-      {/* Imagem */}
+      {/* Imagem Desktop */}
       <motion.img
-        src={HeroImagemContato}
+        src={HeroImagemContatoDesktop}
         alt="Interior do Opera Café Bistrô em Goiânia, ambiente para reservas, eventos e atendimento."
         loading="eager"
         fetchPriority="high"
@@ -53,8 +54,47 @@ export default function HeroContato() {
         style={{
           willChange: "transform",
         }}
-        className="absolute inset-0 w-full h-full object-cover"
+        className="
+          hidden
+          md:block
+          absolute
+          inset-0
+          w-full
+          h-full
+          object-cover
+          object-center
+        "
       />
+
+      {/* Imagem Mobile */}
+      <motion.img
+        src={HeroImagemContatoMobile}
+        alt="Interior do Opera Café Bistrô em Goiânia, ambiente para reservas, eventos e atendimento."
+        loading="eager"
+        fetchPriority="high"
+        decoding="async"
+        width={1080}
+        height={1920}
+        initial={{ scale: 1.08 }}
+        animate={{ scale: 1 }}
+        transition={{
+          duration: 2.5,
+          ease,
+        }}
+        style={{
+          willChange: "transform",
+        }}
+        className="
+          block
+          md:hidden
+          absolute
+          inset-0
+          w-full
+          h-full
+          object-cover
+          object-center
+        "
+/>
 
       {/* Overlay */}
       <div

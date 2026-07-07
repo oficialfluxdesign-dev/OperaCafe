@@ -1,6 +1,7 @@
 import { memo } from "react";
 import { motion } from "framer-motion";
 import HeroImagemSobre from "../assets/HeroImagemSobre.png";
+import HeroImagemSobreMobile from "../assets/HeroImagemSobreMobile.jpg";
 
 const imageAnim = {
   initial: { scale: 1.08 },
@@ -27,7 +28,7 @@ function HeroSobre() {
       className="relative h-[100svh] md:h-screen overflow-hidden"
       aria-labelledby="hero-sobre-title"
     >
-      {/* Imagem */}
+      {/* Imagem Desktop */}
       <motion.img
         src={HeroImagemSobre}
         alt="Interior do Opera Café Bistrô em Goiânia"
@@ -37,6 +38,31 @@ function HeroSobre() {
         draggable={false}
         {...imageAnim}
         className="
+          hidden
+          md:block
+          absolute
+          inset-0
+          w-full
+          h-full
+          object-cover
+          object-center
+          select-none
+          will-change-transform
+        "
+      />
+
+      {/* Imagem Mobile */}
+      <motion.img
+        src={HeroImagemSobreMobile}
+        alt="Interior do Opera Café Bistrô em Goiânia"
+        loading="eager"
+        fetchPriority="high"
+        decoding="async"
+        draggable={false}
+        {...imageAnim}
+        className="
+          block
+          md:hidden
           absolute
           inset-0
           w-full

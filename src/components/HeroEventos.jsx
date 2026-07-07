@@ -1,5 +1,6 @@
 import { motion, useReducedMotion } from "framer-motion";
-import ImagemHero from "../assets/HeroImagemEventos.png";
+import HeroImagemDesktop from "../assets/HeroImagemEventos.png";
+import HeroImagemMobile from "../assets/HeroImagemEventosMobile.jpg";
 
 export default function HeroEventos() {
   const shouldReduceMotion = useReducedMotion();
@@ -9,9 +10,9 @@ export default function HeroEventos() {
       aria-labelledby="hero-eventos-title"
       className="relative h-[100svh] md:h-screen overflow-hidden"
     >
-      {/* imagem */}
+      {/* Imagem Desktop */}
       <motion.img
-        src={ImagemHero}
+        src={HeroImagemDesktop}
         alt="Eventos e experiências do Opera Café Bistrô em Goiânia"
         loading="eager"
         fetchPriority="high"
@@ -25,6 +26,36 @@ export default function HeroEventos() {
           ease: [0.22, 1, 0.36, 1],
         }}
         className="
+          hidden
+          md:block
+          absolute
+          inset-0
+          w-full
+          h-full
+          object-cover
+          object-center
+          transform-gpu
+        "
+      />
+
+      {/* Imagem Mobile */}
+      <motion.img
+        src={HeroImagemMobile}
+        alt="Eventos e experiências do Opera Café Bistrô em Goiânia"
+        loading="eager"
+        fetchPriority="high"
+        decoding="async"
+        draggable={false}
+        style={{ willChange: "transform" }}
+        initial={shouldReduceMotion ? false : { scale: 1.08 }}
+        animate={shouldReduceMotion ? {} : { scale: 1 }}
+        transition={{
+          duration: 2.5,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+        className="
+          block
+          md:hidden
           absolute
           inset-0
           w-full
