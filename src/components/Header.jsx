@@ -113,7 +113,7 @@ export default function Header() {
 
         {/* Desktop */}
         <nav className="hidden lg:flex gap-[50px] text-white text-[16px]">
-          <Link to="/loja" className="flex items-center gap-2 hover:text-[#017459] transition">
+          <Link to="/" className="flex items-center gap-2 hover:text-[#017459] transition">
             <ShoppingBag size={14} />
             Loja Online
           </Link>
